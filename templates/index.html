@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinguaFlow | Language Translation Tool</title>
+    <meta name="description" content="A responsive language translation tool built with Flask, HTML, CSS, and JavaScript.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    
+
+</head>
+<body>
+    <main class="app-shell">
+        <section class="translator-panel" aria-labelledby="appTitle">
+            <div class="panel-header">
+                <div>
+                    <p class="eyebrow">CodeAlpha AI Project</p>
+                    <h1 id="appTitle">LinguaFlow Translator</h1>
+                    <p class="subtitle">Fast text translation with copy and speech tools.</p>
+                </div>
+                <div class="status-pill" id="connectionStatus">
+                    <span class="status-dot"></span>
+                    <span class="status-text">Ready</span>
+                </div>
+            </div>
+
+            <form class="translator-form" id="translatorForm">
+                <div class="language-row">
+                    <label class="field-group" for="sourceLanguage">
+                        <span>From</span>
+                        <select id="sourceLanguage" name="sourceLanguage">
+                            <option value="auto">Auto Detect</option>
+                            <option value="en">English</option>
+                            <option value="hi">Hindi</option>
+                            <option value="te">Telugu</option>
+                            <option value="ta">Tamil</option>
+                            <option value="kn">Kannada</option>
+                            <option value="ml">Malayalam</option>
+                            <option value="mr">Marathi</option>
+                            <option value="bn">Bengali</option>
+                            <option value="gu">Gujarati</option>
+                            <option value="fr">French</option>
+                            <option value="es">Spanish</option>
+                            <option value="de">German</option>
+                            <option value="ja">Japanese</option>
+                        </select>
+                    </label>
+
+                    <button class="swap-button" type="button" id="swapLanguages" aria-label="Swap languages">
+                        <span aria-hidden="true">&#8644;</span>
+                    </button>
+
+                    <label class="field-group" for="targetLanguage">
+                        <span>To</span>
+                        <select id="targetLanguage" name="targetLanguage">
+                            <option value="hi">Hindi</option>
+                            <option value="en">English</option>
+                            <option value="te">Telugu</option>
+                            <option value="ta">Tamil</option>
+                            <option value="kn">Kannada</option>
+                            <option value="ml">Malayalam</option>
+                            <option value="mr">Marathi</option>
+                            <option value="bn">Bengali</option>
+                            <option value="gu">Gujarati</option>
+                            <option value="fr">French</option>
+                            <option value="es">Spanish</option>
+                            <option value="de">German</option>
+                            <option value="ja">Japanese</option>
+                        </select>
+                    </label>
+                </div>
+
+                <div class="workspace-grid">
+                    <label class="text-card" for="inputText">
+                        <span class="card-label">Original Text</span>
+                        <textarea id="inputText" name="inputText" maxlength="1000" placeholder="Type something to translate..."></textarea>
+                        <span class="counter"><strong id="characterCount">0</strong>/1000</span>
+                    </label>
+
+                    <section class="text-card output-card" aria-labelledby="outputTitle">
+                        <div class="output-header">
+                            <span class="card-label" id="outputTitle">Translated Text</span>
+                            <div class="tool-buttons">
+                                <button type="button" id="copyOutput" aria-label="Copy translated text">Copy</button>
+                                <button type="button" id="speakOutput" aria-label="Speak translated text">Speak</button>
+                            </div>
+                        </div>
+                        <p class="placeholder-result" id="translatedText">Your translation will appear here.</p>
+                    </section>
+                </div>
+
+                <div class="action-row">
+                    <button class="secondary-button" type="reset" id="clearButton">Clear</button>
+                    <button class="primary-button" type="submit" id="translateButton">
+                        <span class="button-text">Translate</span>
+                        <span class="loader" aria-hidden="true"></span>
+                    </button>
+                </div>
+
+                <p class="message-area" id="messageArea" role="status"></p>
+            </form>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
